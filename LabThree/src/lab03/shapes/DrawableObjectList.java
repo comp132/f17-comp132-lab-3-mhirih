@@ -1,6 +1,7 @@
 package lab03.shapes;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 /**
  * A DrawableObjectList is a collection of Objects that implement the Drawable
@@ -8,12 +9,15 @@ import java.awt.*;
  * objects to be drawn on the screen. This class also provides methods for
  * drawing or scaling all of the objects.
  */
-public class DrawableObjectList {
+public class DrawableObjectList { //implements Drawable
 
+	private ArrayList<Drawable> collection;
+	
     /**
      * Construct a new empty DrawableObjectList.
      */
     public DrawableObjectList() {
+    	collection = new ArrayList<>();
     }
 
     /**
@@ -22,7 +26,7 @@ public class DrawableObjectList {
      * @return the size of the list.
      */
     public int getSize() {
-        return -1;
+        return collection.size();
     }
 
     /**
@@ -31,6 +35,7 @@ public class DrawableObjectList {
      * @param obj the Drawable object to be added.
      */
     public void addDrawable(Drawable obj) {
+    	collection.add(obj);
     }
 
     /**
@@ -40,6 +45,7 @@ public class DrawableObjectList {
      * @param obj the Drawable object to remove.
      */
     public void removeDrawable(Drawable obj) {
+    	collection.remove(obj);
     }
 
     /**
@@ -52,6 +58,11 @@ public class DrawableObjectList {
      * @param g the Graphics object on which to draw the objects.
      */
     public void drawAll(Graphics g) {
+    	for (int i=collection.size()-1; i>=0;i--){
+    		if(collection.get(i).isVisible()){
+    			collection.get(i).draw(g);
+    		}
+    	}
     }
 
     /**
@@ -63,5 +74,11 @@ public class DrawableObjectList {
      * @param factor the factor by which to scale the Scaleable objects.
      */
     public void scaleAll(double factor) {
+    	for (int i=0; i<collection.size();i++){
+    		if(collection.get(i) instanceof Scaleable) {
+    			Scaleable obj = (Scaleable) collection.get(i);
+    			obj.scale(factor);
+    		}
+    	}
     }
 }
