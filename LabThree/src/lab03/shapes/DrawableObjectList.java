@@ -58,7 +58,7 @@ public class DrawableObjectList { //implements Drawable
      * @param g the Graphics object on which to draw the objects.
      */
     public void drawAll(Graphics g) {
-    	for (int i=collection.size()-1; i>=0;i--){
+    	for (int i=0; i<collection.size();i++){
     		if(collection.get(i).isVisible()){
     			collection.get(i).draw(g);
     		}

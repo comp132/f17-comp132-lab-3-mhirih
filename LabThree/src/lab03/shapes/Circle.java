@@ -13,7 +13,7 @@ public class Circle implements Drawable, Scaleable {
     private int radius;
     private Color theColor;
     private boolean isVisible;
-
+    
     /**
      * Construct a new Circle centered at initX, initY with a radius of
      * initRadius and color indicated by initColor. The new Circle is visible by

@@ -5,7 +5,8 @@ import java.awt.Graphics;
 
 /**
  * a Person is an object representing a stick figure. A Person has a reference point
- * (x,y) and a color. It can be moved, translated, and drawn.
+ * (x,y) indicating the position of the left foot and a color. 
+ * It can be moved, translated, and drawn.
  * 
  * @author Houssem Mhiri
  *
