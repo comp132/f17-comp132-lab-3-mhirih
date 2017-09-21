@@ -82,16 +82,35 @@ public class Person implements Drawable{
     // === Implementation of the Drawable interface ===
 
     /**
-     * Draw this DrawableCircle onto the specified Graphics object.
+     * Draw this Drawable Person onto the specified Graphics object.
      * 
-     * @param g the Graphics object on which to draw this DrawableCircle.
+     * @param g the Graphics object on which to draw this Person.
      */
     public void draw(Graphics g) {
         g.setColor(getColor());
+        g.fillOval(x+2, y-12, 2,2);
+        
+        int[] xPoints = new int[4];
+        int[] yPoints = new int[4];
+        
+        xPoints[0]=x;
+        xPoints[1]=x+3;
+        xPoints[2]=x+3;
+        xPoints[3]=x;
+        
+        yPoints[0]=y;
+        yPoints[1]=y-3;
+        yPoints[2]=y-8;
+        yPoints[3]=y-5;
+        
+        g.drawPolyline(xPoints, yPoints, 4);
+        g.drawLine(x+6, y, x+3, y-3);
+        g.drawLine(x+3, y-8, x+6, y-5);
+        
     }
 
     /**
-     * Get the Color of this Circle.
+     * Get the Color of this Figure.
      * 
      * @return the color.
      */
@@ -100,7 +119,7 @@ public class Person implements Drawable{
     }
 
     /**
-     * Change the color of this Circle to the newColor.
+     * Change the color of this Person to the newColor.
      * 
      * @param newColor the new color.
      */
@@ -109,11 +128,11 @@ public class Person implements Drawable{
     }
 
     /**
-     * Set whether or not this Circle will be visible. If it is visible its draw
+     * Set whether or not this Person will be visible. If it is visible its draw
      * method will be invoked when the DrawingTablet is repainted. If it is not
      * visible its draw method will not be invoked.
      * 
-     * @param visible true to make this Circle visible, false to make it
+     * @param visible true to make this Person visible, false to make it
      *            invisible.
      */
     public void setVisible(boolean visible) {
@@ -121,9 +140,9 @@ public class Person implements Drawable{
     }
 
     /**
-     * Find out if this Circle is visible or not.
+     * Find out if this Person is visible or not.
      * 
-     * @return true if the Circle is visible, false if it is not.
+     * @return true if the Person is visible, false if it is not.
      */
     public boolean isVisible() {
         return isVisible;

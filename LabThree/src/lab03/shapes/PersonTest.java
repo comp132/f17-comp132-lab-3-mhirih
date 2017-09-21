@@ -37,4 +37,19 @@ public class PersonTest {
         assertEquals("wrong x", 6, p1.getX());
         assertEquals("wrong y", 11, p1.getY());
     }
+    
+    @Test
+    public void testSetColor() {
+        p1.setColor(Color.cyan);
+        assertEquals("wrong color", Color.cyan, p1.getColor());     
+    }
+    
+    @Test
+    public void testSetVisible() {
+        p1.setVisible(false);
+        assertFalse("should be invisible", p1.isVisible());
+        
+        p1.setVisible(true);
+        assertTrue("should be visible", p1.isVisible());
+    }
 }
