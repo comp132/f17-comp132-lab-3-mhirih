@@ -5,7 +5,7 @@ import java.awt.Graphics;
 
 /**
  * A House is an object representing a house. A House has a location point
- * (x,y) for its upper left corner, a roof color and a wall color. 
+ * (x,y) for the upper left corner of its wall, a roof color and a wall color. 
  * It can be moved, translated, scaled and drawn.
  * 
  * @author Houssem Mhiri
@@ -139,8 +139,10 @@ public class House implements Drawable, Scaleable{
      * @param g the Graphics object on which to draw this DrawableHouse.
      */
     public void draw(Graphics g) {
-        g.setColor(getColor());
+    	//draw the bottom part
+        g.setColor(Color.black);
         g.drawRect(x, y, width, height);
+        g.setColor(getColor());
         g.fillRect(x, y, width, height);
         
         int[] xPoints = new int[3];
@@ -150,30 +152,27 @@ public class House implements Drawable, Scaleable{
         xPoints[1]=x+width;
         xPoints[2]=x+width/2;
         
-        yPoints[0]=y-height;
-        yPoints[1]=y-height;
-        yPoints[2]=y-2*height;
+        yPoints[0]=y;
+        yPoints[1]=y;
+        yPoints[2]=(int) (y-(height*0.75));
         
-        g.setColor(getColor().darker());
+        //draw the roof
+        g.setColor(Color.black);
         g.drawPolygon(xPoints, yPoints, 3);
+        g.setColor(getColor().darker());
         g.fillPolygon(xPoints, yPoints, 3);
         
         //Draw the door
         g.setColor(Color.black);
-        g.drawRect(x/4, y+2, width/4, height-6);
+        g.drawRect(x+(width/6), y+(height/5), width/4, (int) (height*0.75));
         g.setColor(Color.orange);
-        g.fillRect(x/4, y+2, width/4, height-6);
-        
-        //Draw the knob
-        g.setColor(Color.black);
-        g.fillOval(x/4 +2, height -5, 2, 2);
+        g.fillRect(x+(width/6), y+(height/5), width/4, (int) (height*0.75));
         
         //draw the window
         g.setColor(Color.black);
-        g.drawRect(width/2 +4, y+5, 5, 5);
+        g.drawRect((int) (x+(0.625*width)), y+(height/4), width/4, height/3);
         g.setColor(Color.cyan);
-        g.fillRect(width/2 +4, y+5, 5, 5);
-        
+        g.fillRect((int) (x+(0.625*width)), y+(height/4), width/4, height/3);     
     }
 
     /**

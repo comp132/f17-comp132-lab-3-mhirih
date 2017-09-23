@@ -89,24 +89,24 @@ public class Person implements Drawable{
      */
     public void draw(Graphics g) {
         g.setColor(getColor());
-        g.fillOval(x+2, y-12, 2,2);
+        g.fillOval(x+3, y-24, 6,6);
         
         int[] xPoints = new int[4];
         int[] yPoints = new int[4];
         
         xPoints[0]=x;
-        xPoints[1]=x+3;
-        xPoints[2]=x+3;
+        xPoints[1]=x+6;
+        xPoints[2]=x+6;
         xPoints[3]=x;
         
         yPoints[0]=y;
-        yPoints[1]=y-3;
-        yPoints[2]=y-8;
-        yPoints[3]=y-5;
+        yPoints[1]=y-5;
+        yPoints[2]=y-15;
+        yPoints[3]=y-9;
         
         g.drawPolyline(xPoints, yPoints, 4);
-        g.drawLine(x+6, y, x+3, y-3);
-        g.drawLine(x+3, y-8, x+6, y-5);
+        g.drawLine(x+12, y, x+6, y-5);
+        g.drawLine(x+6, y-15, x+12, y-9);
         
     }
 
